@@ -1,2 +1,6 @@
-#Ignore all log files, which are useful only to local machines
+# Ignore all log files, which are useful only to local machines
 *.log
+# No need to store .vagrant folder on git
+.vagrant/
+# No need to explain how annoying these can get
+.DS_Store*
