@@ -7,7 +7,7 @@ A deployment of a user-facing web-server, database, and admin web-server on virt
 - `git clone` this repository, and `cd` into the directory
 - Run `vagrant up` to start the virtual machines defined in the `vagrantfile`
     - Note that if you do not have a `ubuntu/xenial64` box installed already, this will be installed upon running `vagrant up`. This may take some time.
-- Once the vagrant indicates that the virtual machines are running, you can connect to the user-facing webserver by navigating to (`127.0.0.1:8080`)[http://127.0.0.1:8080]
+- Once the vagrant indicates that the virtual machines are running, you can connect to the user-facing webserver by navigating to [`127.0.0.1:8080`](http://127.0.0.1:8080)
 
 ## Credits
-- The styling for the webpages for this project was aided by (SkeletonCSS)[http://getskeleton.com/].
+- The styling for the webpages for this project was aided by [SkeletonCSS](http://getskeleton.com/])
