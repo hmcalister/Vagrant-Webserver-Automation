@@ -23,6 +23,6 @@ The adminserver runs Apache2, configured to host the admin-facing site using `ad
 
 ## Credits
 - A large portion of this project has been developed based on repurposed files from [COSC349 labs](https://cosc349.cspages.otago.ac.nz/lab-schedule/) (link working: July 2021). A massive credit goes to Dr. David Eyers, who provided these resources and allowed for them to be reused. Specifically, large parts of the `vagrantfile`, and `webserver.conf` file are based on these lab files.
-- Virtual Machines in this project run (`Ubuntu/Xenial`)[https://ubuntu.com/16-04].
-- Webservers are using (Apache2)[https://www.apache.org/licenses/LICENSE-2.0].
+- Virtual Machines in this project run [`Ubuntu/Xenial`](https://ubuntu.com/16-04).
+- Webservers are using [Apache2](https://www.apache.org/licenses/LICENSE-2.0).
 - The styling for the webpages for this project was aided by [SkeletonCSS](http://getskeleton.com/])
