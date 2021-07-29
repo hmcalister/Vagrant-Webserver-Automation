@@ -1,0 +1,2 @@
+#Ignore all log files, which are useful only to local machines
+*.log
