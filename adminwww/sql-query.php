@@ -13,7 +13,7 @@ function sql_query($query){
         return;
     }
 
-    $result = mysqli_query($con, $_POST['query']);
+    $result = mysqli_query($con, $query);
     if (gettype($result) === "boolean") {
         if ($result) {
             echo ("Query Successful!");
