@@ -16,9 +16,9 @@ function sql_query($query){
     $result = mysqli_query($con, $query);
     if (gettype($result) === "boolean") {
         if ($result) {
-            echo ("Query Successful!");
+            echo ("<h1>Query Successful!</h1>");
         } else {
-            echo ("Query Failed!");
+            echo ("<h1>Query Failed!</h1>");
         }
     } else {
         $finfo = $result->fetch_fields();
