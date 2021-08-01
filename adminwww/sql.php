@@ -56,18 +56,14 @@ if (!isset($_SESSION['loggedin'])) {
             <?php include "sql-query.php"; ?>
             <?php
             if ($_POST) {
-                // Change this to your connection info.
-                
-            
                 // Now we check if the data from the login form was submitted, isset() will check if the data exists.
                 if ($_POST['query'] === "") {
                     // Could not get the data that should have been sent.
                     echo('Please enter a query!');
-                    return;
-                }
-            
-                printf("<h3>%s</h3>", $_POST['query']);
-                sql_query($_POST['query']);
+                } else {
+                    printf("<h3>%s</h3>", $_POST['query']);
+                    sql_query($_POST['query']);
+                }                
             }
             ?>
             </div>
