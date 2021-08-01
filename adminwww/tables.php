@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
     <?php $page_name = "Tables";
     include 'header.php';
-    include 'sql-query.php' ?>
+    include 'sql-query.php'; ?>
 
     <div class="container" id="main">
         <div class="row">
