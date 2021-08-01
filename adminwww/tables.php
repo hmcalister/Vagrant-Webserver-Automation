@@ -69,14 +69,8 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="twelve columns">
                 <?php
                 if ($_POST) {
-                    // Now we check if the data from the login form was submitted, isset() will check if the data exists.
-                    if ($_POST['query'] === "") {
-                        // Could not get the data that should have been sent.
-                        echo ('Please enter a query!');
-                    } else {
-                        echo ("<h1>Table: " . $_POST['table'] . "</h1>");
-                        sql_query('SELECT * FROM ' . $_POST['table'] . ';');
-                    }
+                    echo ("<h1>Table: " . $_POST['table'] . "</h1>");
+                    sql_query('SELECT * FROM ' . $_POST['table'] . ';');
                 }
                 ?>
             </div>
