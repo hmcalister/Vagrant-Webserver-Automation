@@ -5,7 +5,7 @@
 
 	<!-- Basic Page metadata -->
 	<meta charset="utf-8">
-	<title>COSC349 Assignment 1</title>
+	<title>Admin - Login</title>
 	<meta name="description" content="COSC349 Assignment 1">
 	<meta name="author" content="Hayden McAlister">
 
