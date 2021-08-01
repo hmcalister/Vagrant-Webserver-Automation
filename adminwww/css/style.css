@@ -4,6 +4,10 @@ body{
     min-height: 100%;
 }
 
+h1{
+    text-align: center;
+}
+
 .admin-section-button{
     width:80%;
     /* height:; */
@@ -27,6 +31,10 @@ body{
 
 #main{
     padding-bottom: 5%;
+}
+
+#header{
+    width:100%;
 }
 
 #footer{

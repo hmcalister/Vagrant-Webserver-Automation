@@ -1,6 +1,5 @@
 <?php
-if ($_POST) {
-    // Change this to your connection info.
+function sql_query($query){
     $DATABASE_HOST = '192.168.2.12:3306';
     $DATABASE_USER = 'root';
     $DATABASE_PASS = 'root';
@@ -14,20 +13,12 @@ if ($_POST) {
         return;
     }
 
-    // Now we check if the data from the login form was submitted, isset() will check if the data exists.
-    if ($_POST['query'] === "") {
-        // Could not get the data that should have been sent.
-        echo('Please enter a query!');
-        return;
-    }
-
-    printf("<h3>%s</h3>", $_POST['query']);
-    $result = mysqli_query($con, $_POST['query']);
+    $result = mysqli_query($con, $query);
     if (gettype($result) === "boolean") {
         if ($result) {
-            echo ("Query Successful!");
+            echo ("<h1>Query Successful!</h1>");
         } else {
-            echo ("Query Failed!");
+            echo ("<h1>Query Failed!</h1>");
         }
     } else {
         $finfo = $result->fetch_fields();
