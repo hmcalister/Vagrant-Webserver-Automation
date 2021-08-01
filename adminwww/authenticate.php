@@ -56,4 +56,5 @@ if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
 
 	$stmt->close();
 }
+$con->close();
 ?>
