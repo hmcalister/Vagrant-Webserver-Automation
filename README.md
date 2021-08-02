@@ -7,10 +7,7 @@ A deployment of a user-facing web-server, database, and admin web-server on virt
     - In this project, occasionally after using `vagrant halt` a VM will fail to boot at the next `vagrant up`. This happens periodically, and to different VMs, but I believe the problem can be tracked to incompatibilities between VirtualBox and Vagrant. While downgrading one or the other many solve the issue, a more connivent (for some meaning of the word) solution is to instead just use `vagrant destroy` on the misbehaving machine
     - On the lab machines, we used Vagrant 2.2.7 and Virtualbox 6.1.16r140961.
       This seemed to solve the issue of vagrant halt and vagrant up not playing
-      nicel
-        - On the lab machines, we used Vagrant 2.2.7 and Virtualbox
-          6.1.16r140961. This seemed to solve the issue of vagrant halt and
-          vagrant up not playing nicelyy
+      nicely
 - `git clone` this repository, and `cd` into the directory
 - Run `vagrant up` to start the virtual machines defined in the `vagrantfile`
     - Note that if you do not have a `ubuntu/xenial64` box installed already, this will be installed upon running `vagrant up`. This may take some time.
