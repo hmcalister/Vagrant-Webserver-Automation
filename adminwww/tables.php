@@ -37,20 +37,18 @@ if (!isset($_SESSION['loggedin'])) {
 
     <div class="container" id="main">
         <div class="row">
-            <div class="twelve columns">
-                <?php
-                include 'database-login.php';
-                $result = mysqli_query($con, "SHOW TABLES;");
-                while ($table=mysqli_fetch_array($result, MYSQLI_NUM)) {
-                    echo ("<div class='twelve columns'>");
-                    echo ("<form action='tables.php' method='post'>
+            <?php
+            include 'database-login.php';
+            $result = mysqli_query($con, "SHOW TABLES;");
+            while ($table = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                echo ("<div class='twelve columns'>");
+                echo ("<form action='tables.php' method='post'>
                 <button type='submit' style='width:100%; font-size:32px;' name='table' value=" . $table[0] . ">" . $table[0] . "</button>
                 </form>");
-                    echo ("</div>");
-                }
-                $con->close();
-                ?>
-            </div>
+                echo ("</div>");
+            }
+            $con->close();
+            ?>
         </div>
         <div class=row>
             <div class="twelve columns">
