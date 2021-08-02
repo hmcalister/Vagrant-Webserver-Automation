@@ -53,11 +53,10 @@ if (!isset($_SESSION['loggedin'])) {
                     return;
                 }
                 $result = mysqli_query($con, "SHOW TABLES;");
-                $result = mysqli_fetch_array($result);
-                for ($i = 0; $i < count($result); $i += 2) {
+                while ($table=mysqli_fetch_array($result, MYSQLI_NUM)) {
                     echo ("<div class='twelve columns'>");
                     echo ("<form action='tables.php' method='post'>
-                <button type='submit' style='width:100%; font-size:32px;' name='table' value=" . $result[$i] . ">" . $result[$i] . "</button>
+                <button type='submit' style='width:100%; font-size:32px;' name='table' value=" . $table[0] . ">" . $table[0] . "</button>
                 </form>");
                     echo ("</div>");
                 }
