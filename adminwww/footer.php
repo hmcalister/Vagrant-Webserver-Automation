@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="eight columns">
-                <?php echo '<h1>User: ' . $_SESSION['name'] . '</h1>' ?>
+                <?php echo '<h2>User: ' . $_SESSION['name'] . '</h2>' ?>
             </div>
             <div class="two columns">
                 <a href="home.php"><button type="button">Home</button></a>
