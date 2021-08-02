@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS admin(
 );
 
 CREATE TABLE IF NOT EXISTS gamemode(
-	gametype VARCHAR(50) NOT NULL,
+    gametype int NOT NULL,
+	name VARCHAR(50) NOT NULL,
     width int NOT NULL,
     height int NOT NULL,
     bomb_ratio float(8) NOT NULL,
