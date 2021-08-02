@@ -32,3 +32,4 @@ The adminserver runs Apache2, configured to host the admin-facing site using `ad
 - Virtual Machines in this project run [`Ubuntu/Xenial`](https://ubuntu.com/16-04).
 - Webservers are using [Apache2](https://www.apache.org/licenses/LICENSE-2.0).
 - The styling for the webpages for this project was aided by [SkeletonCSS](http://getskeleton.com/])
+- Icons are taken from [icons8](https://icons8.com) with license for personal use
