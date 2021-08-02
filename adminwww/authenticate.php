@@ -1,16 +1,7 @@
 <?php
 session_start();
 // Change this to your connection info.
-$DATABASE_HOST = '192.168.2.12:3306';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = 'root';
-$DATABASE_NAME = 'webdatabase';
-// Try and connect using the info above.
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if ( mysqli_connect_errno() ) {
-	// If there is an error with the connection, stop the script and display the error.
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
+include 'database-login.php';
 
 // Now we check if the data from the login form was submitted, isset() will check if the data exists.
 if ( !isset($_POST['username'], $_POST['password']) ) {
@@ -19,7 +10,7 @@ if ( !isset($_POST['username'], $_POST['password']) ) {
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
+if ($stmt = $con->prepare('SELECT passwd FROM admin WHERE username = ?')) {
 	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
 	$stmt->bind_param('s', $_POST['username']);
 	$stmt->execute();
@@ -27,7 +18,7 @@ if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
 	$stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $password);
+        $stmt->bind_result($password);
         $stmt->fetch();
         // Account exists, now we verify the password.
         // Note: remember to use password_hash in your registration file to store the hashed passwords.
@@ -35,12 +26,13 @@ if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
             // Verification success! User has logged-in!
             // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
             session_regenerate_id();
+            $con->close();
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
-            $_SESSION['id'] = $id;
             header('Location: home.php');
         } else {
             // Incorrect password
+            $con->close();
             echo '<script>
             alert("Incorrect username and/or password!");
             window.location.href="index.php";
@@ -48,6 +40,7 @@ if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
         }
     } else {
         // Incorrect username
+        $con->close();
         echo '<script>
             alert("Incorrect username and/or password!");
             window.location.href="index.php";
@@ -56,5 +49,4 @@ if ($stmt = $con->prepare('SELECT id, passwd FROM admin WHERE username = ?')) {
 
 	$stmt->close();
 }
-$con->close();
 ?>

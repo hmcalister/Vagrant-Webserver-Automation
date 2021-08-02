@@ -8,6 +8,15 @@ h1{
     text-align: center;
 }
 
+button{
+    color:black;
+    transition: 0.5s;
+}
+
+button:hover{
+    background-color: #aaaaff;
+}
+
 .admin-section-button{
     width:80%;
     /* height:; */

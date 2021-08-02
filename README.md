@@ -5,6 +5,9 @@ A deployment of a user-facing web-server, database, and admin web-server on virt
 - Ensure that you have Vagrant and a virtual machine manager installed
     - For development, we have used Vagrant 2.2.18, and VirtualBox 6.1.26r145957
     - In this project, occasionally after using `vagrant halt` a VM will fail to boot at the next `vagrant up`. This happens periodically, and to different VMs, but I believe the problem can be tracked to incompatibilities between VirtualBox and Vagrant. While downgrading one or the other many solve the issue, a more connivent (for some meaning of the word) solution is to instead just use `vagrant destroy` on the misbehaving machine
+    - On the lab machines, we used Vagrant 2.2.7 and Virtualbox 6.1.16r140961.
+      This seemed to solve the issue of vagrant halt and vagrant up not playing
+      nicely
 - `git clone` this repository, and `cd` into the directory
 - Run `vagrant up` to start the virtual machines defined in the `vagrantfile`
     - Note that if you do not have a `ubuntu/xenial64` box installed already, this will be installed upon running `vagrant up`. This may take some time.
@@ -29,3 +32,4 @@ The adminserver runs Apache2, configured to host the admin-facing site using `ad
 - Virtual Machines in this project run [`Ubuntu/Xenial`](https://ubuntu.com/16-04).
 - Webservers are using [Apache2](https://www.apache.org/licenses/LICENSE-2.0).
 - The styling for the webpages for this project was aided by [SkeletonCSS](http://getskeleton.com/])
+- Icons are taken from [icons8](https://icons8.com) with license for personal use
