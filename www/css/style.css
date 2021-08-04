@@ -17,8 +17,12 @@ button:hover{
     background-color: #aaaaff;
 }
 
+.result_table{
+    width: 100%;
+}
+
 #main{
-    padding-bottom: 5%;
+    padding-bottom: 10%;
 }
 
 #header{

@@ -35,7 +35,7 @@ cat /vagrant/database-setup/setup-database.sql | mysql -u $DBUSER $DBNAME
 echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/admins.secret' INTO TABLE admin FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (username, passwd)" | mysql -u $DBUSER $DBNAME
 
 # Load some initial game modes into the database
-echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/gamemodes.data' INTO TABLE gamemode FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (gametype,name,width,height,bomb_ratio)" | mysql -u $DBUSER $DBNAME
+echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/gamemodes.data' INTO TABLE gamemode FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (gamemode,modename,width,height,bomb_ratio)" | mysql -u $DBUSER $DBNAME
 
 
 # Allow access to database from outside hosts using bind-address

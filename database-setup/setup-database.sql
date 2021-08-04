@@ -6,19 +6,22 @@ CREATE TABLE IF NOT EXISTS admin(
 );
 
 CREATE TABLE IF NOT EXISTS gamemode(
-    gametype int NOT NULL,
-	name VARCHAR(50) NOT NULL,
+    gamemode int NOT NULL,
+	modename VARCHAR(50) NOT NULL,
     width int NOT NULL,
     height int NOT NULL,
     bomb_ratio float(8) NOT NULL,
 
-    PRIMARY KEY (gametype)
+    PRIMARY KEY (gamemode)
 );
 
 CREATE TABLE IF NOT EXISTS scores(
 	id INT(7) NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
-    time TIMESTAMP,
+    gamemode int NOT NULL,
+    gamewon boolean NOT NULL,
+    score int NOT NULL,
 
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (gamemode) REFERENCES gamemode(gamemode)
 );

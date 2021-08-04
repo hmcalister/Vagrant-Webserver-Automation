@@ -21,11 +21,13 @@
 <body>
     <?php $page_name = "Login";
     include 'header.php'; ?>
+
     <div class="container">
         <div class="row">
             <div class="twelve columns">
                 <h1>Login</h1>
             </div>
+            
             <form action="login.php" method="POST">
                 <div class="eight columns">
                     <input type="text" name="username" placeholder="Username" style="width: 100%;" required>
