@@ -28,16 +28,20 @@ Vagrant.configure("2") do |config|
       #Update the software on the VM
       apt-get update
       #Install apache2, the webserver for this VM
-      apt-get install -y apache2 php libapache2-mod-php php-mysql
+      #apt-get install -y apache2 php libapache2-mod-php php-mysql
+      apt install -y nginx php php-fpm php-mysql
             
       # Set our webserver to use the config file in the shared (root) directory
-      cp /vagrant/usersite.conf /etc/apache2/sites-available/
+      cp /vagrant/usersite /etc/nginx/sites-available/
       # activate our website configuration
-      a2ensite usersite
+      #a2ensite usersite
+      ln -s /etc/nginx/sites-available/usersite /etc/nginx/sites-enabled/
       # and disable the default website provided with Apache
-      a2dissite 000-default
+      #a2dissite 000-default
+      unlink /etc/nginx/sites-enabled/default
       # Reload the webserver configuration, to pick up our changes
-      service apache2 reload
+      #service apache2 reload
+      systemctl reload nginx
     SHELL
   end
 
