@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="twelve columns">
-                <h1>Login</h1>
+                <h1>Minesweeper</h1>
             </div>
             
             <form action="login.php" method="POST">
@@ -33,7 +33,7 @@
                     <input type="text" name="username" placeholder="Username" style="width: 100%;" required>
                 </div>
                 <div class="four columns">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Play">
                 </div>
             </form>
         </div>
