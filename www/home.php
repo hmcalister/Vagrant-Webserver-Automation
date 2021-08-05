@@ -32,24 +32,39 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
     <?php $page_name = "Home";
     include 'header.php'; ?>
+
     <div class="container" id="main">
+        <!-- Button to access leaderboards, could be cleaner HTML but it works -->
         <div class="row">
             <div class='twelve columns'>
-                <h1>Please choose a gamemode</h1>
+                <a href="leaderboard.php"><button style='width:100%; font-size:32px;'>Leaderboards</button></a>
             </div>
-            <div class="row">
-                <?php
-                include "database-login.php";
-                $result = mysqli_query($con, "SELECT * FROM gamemode;");
-                while ($gamemode = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    echo ("<div class='twelve columns'>");
-                    echo ("<form action='game.php' method='post'>
-                <button type='submit' style='width:100%; font-size:32px;' name='gametype' value=" . $gamemode['gametype'] . ">" . $gamemode['name'] . "</button>
+        </div>
+
+        <div class="row">
+            <div class='twelve columns'>
+                <h1>Please choose a Game mode</h1>
+            </div>
+        </div>
+
+        <!-- Pull gamemodes from Database and make buttons from them-->
+        <div class="row">
+            <?php
+            // Log into database, make query of gamemode table
+            // TODO: secure query
+            include "database-login.php";
+            $result = mysqli_query($con, "SELECT * FROM gamemode;");
+
+            // While there are still gamemodes
+            while ($gamemode = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                // Make a new full width button to display this game mode
+                echo ("<div class='twelve columns'>");
+                echo ("<form action='game.php' method='post'>
+                <button type='submit' style='width:100%; font-size:32px;' name='gamemode' value=" . $gamemode['gamemode'] . ">" . $gamemode['modename'] . "</button>
                 </form>");
-                    echo ("</div>");
-                }
-                ?>
-            </div>
+                echo ("</div>");
+            }
+            ?>
         </div>
     </div>
 

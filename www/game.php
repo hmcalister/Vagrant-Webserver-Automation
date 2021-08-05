@@ -9,18 +9,18 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
     exit;
 }
-if (!isset($_POST['gametype'])) {
+
+//Ensure the gamemode is selected
+if (!isset($_POST['gamemode'])) {
     header('Location: home.php');
     exit;
 }
-
 include 'database-login.php';
-$result = mysqli_query($con, "SELECT * FROM gamemode WHERE " . $_POST['gametype'] . "=gametype;");
+$result = mysqli_query($con, "SELECT * FROM gamemode WHERE " . $_POST['gamemode'] . "=gamemode;");
 $game_data = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
 
 <head>
-
     <!-- Basic Page metadata -->
     <meta charset="utf-8">
     <title>Game</title>
@@ -36,20 +36,42 @@ $game_data = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
+    <!-- We will need some jquery to handle Ajax -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <!-- Load some stuff from into variables from PHP -->
     <script type="text/javascript">
+        //Remove context menus (right click) to stop interference with flag mechanic
         document.addEventListener('contextmenu', event => event.preventDefault());
+        var username = "<?php echo $_SESSION['username']; ?>";
+        var gamemode = <?php echo $game_data['gamemode']; ?>;
         var width = <?php echo $game_data['width']; ?>;
         var height = <?php echo $game_data['height']; ?>;
         var bomb_ratio = <?php echo $game_data['bomb_ratio']; ?>;
     </script>
-    <script src="game_logic.js"></script>
 
+    <!-- Import the game logic script -->
+    <script src="game_logic.js"></script>
 </head>
 
 <body>
-    <?php $page_name = "Game";
+    <!-- Header file -->
+    <?php $page_name = "Game: ".$game_data['modename'];
     include 'header.php'; ?>
     <div class="container" id="main">
+        <!-- This h1 is used to display win/loss, altered in game_logic.js -->
+        <div class="row">
+            <div class="twelve columns">
+                <h1 id="game_info"></h1>
+            </div>
+        </div>
+        <!-- A restart button, to clear the grid and try again -->
+        <div class="row">
+            <div class="twelve columns">
+                <button id="submit_score_btn" style='width:100%; font-size:32px;' onclick="game_setup()">Restart</button>
+            </div>
+        </div>
+        <!-- Actual game display, created on the fly in JS -->
         <div class="row">
             <div class="twelve columns">
                 <div id="game">
