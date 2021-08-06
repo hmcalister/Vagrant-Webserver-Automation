@@ -60,12 +60,20 @@ if (!isset($_SESSION['loggedin'])) {
                     if ($_POST["password"] != $_POST["confirm-password"]) {
                         echo ("<h1>Passwords do not match!</h1>");
                     } else {
-                        include 'sql-query.php';
-
+                        include 'database-login.php';
                         $new_name = $_POST["username"];
                         $new_password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-                        $query = "INSERT INTO admin(username, passwd) VALUES ('$new_name', '$new_password');";
-                        sql_query($query);
+                        $query = $con->prepare("INSERT INTO admin(username, passwd) VALUES (?, ?);");
+                        $query->bind_param("ss", $new_name, $new_password);
+                        $query->execute();
+                        if($query->affected_rows<=0){
+                            echo("<h1>Addition failed!</h1>");
+                            echo ("<h1>Error: ".mysqli_error($con)."</h1>");
+                        } else {
+                            echo("<h1>Admin: ".$new_name." added!");
+                        }
+                        $query->close();
+                        $con->close();
                     }
                 }
                 ?>
