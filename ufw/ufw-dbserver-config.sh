@@ -18,6 +18,7 @@ ufw allow to 192.168.2.0/24 proto tcp port 3306
 # Enable firewall
 ufw enable
 
+# Display output to check for errors
 systemctl status ufw 
 
 
