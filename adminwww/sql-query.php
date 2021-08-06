@@ -8,7 +8,7 @@ function sql_query($query){
             echo ("<h1>Query Successful!</h1>");
         } else {
             echo ("<h1>Query Failed!</h1>");
-            echo ("<h1>Error:".mysqli_connect_error()."</h1>");
+            echo ("<h1>Error:".mysqli_error($con)."</h1>");
         }
     } else {
         $finfo = $result->fetch_fields();
