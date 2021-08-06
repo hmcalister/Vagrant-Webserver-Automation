@@ -8,11 +8,12 @@ function sql_query($query){
             echo ("<h1>Query Successful!</h1>");
         } else {
             echo ("<h1>Query Failed!</h1>");
+            echo ("<h1>Error:".mysqli_connect_error()."</h1>");
         }
     } else {
         $finfo = $result->fetch_fields();
 
-        echo "<table>"; // start a table tag in the HTML
+        echo "<table style='width:100%;'>"; // start a table tag in the HTML
 
         //create the table headers as column names
         echo ('<tr>');
