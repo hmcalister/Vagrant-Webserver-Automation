@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="row">
             <?php
             // Log into database, get info on what game modes there are
-            //TODO: Secure this query
+            // This query is always serverside, so no need to secure
             include 'database-login.php';
             $result = mysqli_query($con, "SELECT * from gamemode;");
 
@@ -61,11 +61,13 @@ if (!isset($_SESSION['loggedin'])) {
                 if ($_POST) {
                     // Connect to the database and run a very ugly query to get username and time of the selected gamemode
                     include 'database-login.php';
-                    $query = "SELECT s.username, s.score FROM scores s, gamemode g 
+                    $query = $con->prepare("SELECT s.username, s.score FROM scores s, gamemode g 
                                 WHERE g.gamemode=s.gamemode AND s.gamewon=1 
-                                    AND g.modename='" . $_POST['modename'] . "' 
-                                ORDER BY s.score ASC";
-                    $result = mysqli_query($con, $query);
+                                    AND g.modename=? 
+                                ORDER BY s.score ASC");
+                    $query->bind_param("s", $_POST['modename']);
+                    $query->execute();
+                    $result = $query->get_result();
 
                     // Setup start of table and headings
                     echo ("<h1>Game mode: " . $_POST['modename'] . "</h1>");
@@ -77,7 +79,7 @@ if (!isset($_SESSION['loggedin'])) {
                         // Make a new row and place all the data from the results tuple into it
                         // Of form name, time
                         echo "<tr>";
-                        printf("<td>%s</td><td>%s</td>", $row["username"], $row["score"]/1000);
+                        printf("<td>%s</td><td>%s</td>", $row["username"], $row["score"] / 1000);
                         echo "</tr>";
                     }
                     echo "</table>"; //Close the table in HTML

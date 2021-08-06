@@ -1,55 +1,54 @@
 html,
-body{
-    height: 100%;
-    min-height: 100%;
+body {
+  height: 100%;
+  min-height: 100%;
 }
 
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
 
-button{
-    color:black;
-    transition: 0.5s;
+button {
+  color: black;
+  transition: 0.5s;
 }
 
-button:hover{
-    background-color: #aaaaff;
+button:hover {
+  background-color: #aaaaff;
 }
 
-.admin-section-button{
-    width:80%;
-    /* height:; */
-    margin: 10% auto;
-    padding: 5%;
-    text-align: center;
-    background-color: #cacaca;
-    border-radius: 20%;
-    color:black;
-    transition: 0.5s;
+.admin-section-button {
+  width: 80%;
+  margin: 10% auto;
+  padding: 5%;
+  text-align: center;
+  background-color: #cacaca;
+  border-radius: 20%;
+  color: black;
+  transition: 0.5s;
 }
 
-.admin-section-button:hover{
-    border-radius: 10%;
-    background-color: #dddddd;
+.admin-section-button:hover {
+  border-radius: 10%;
+  background-color: #dddddd;
 }
 
-.admin-section-button img{
-    max-width: 80%;
+.admin-section-button img {
+  max-width: 80%;
 }
 
-#main{
-    padding-bottom: 5%;
+#main {
+  padding-bottom: 5%;
 }
 
-#header{
-    width:100%;
+#header {
+  width: 100%;
 }
 
-#footer{
-    position:fixed;
-    bottom: 0px; 
-    width:100%;
-    background-color:#FFFFFF;
-    height:10%;
+#footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #ffffff;
+  height: 10%;
 }

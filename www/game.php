@@ -16,8 +16,12 @@ if (!isset($_POST['gamemode'])) {
     exit;
 }
 include 'database-login.php';
-$result = mysqli_query($con, "SELECT * FROM gamemode WHERE " . $_POST['gamemode'] . "=gamemode;");
+$query=$con->prepare("SELECT * FROM gamemode WHERE ?=gamemode;");
+$query->bind_param("s",$_POST['gamemode']);
+$query->execute();
+$result = $query->get_result();
 $game_data = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$query->close();
 ?>
 
 <head>

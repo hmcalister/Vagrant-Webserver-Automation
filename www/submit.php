@@ -9,7 +9,10 @@ if (!isset($_SESSION['loggedin'])) {
 
 // Log into the database and insert user score into scores table
 include 'database-login.php';
-$result = mysqli_query($con, "INSERT INTO scores(username, gamemode, gamewon, score) 
-                                VALUES ('".$_POST['username']."', ".$_POST['gamemode'].", ".$_POST['gamewon'].", ".$_POST['score'].");");
+$query = $con->prepare("INSERT INTO scores(username, gamemode, gamewon, score) 
+                            VALUES (?, ?, ?, ?);");
+$query->bind_param("ssss",$_POST['username'], $_POST['gamemode'], $_POST['gamewon'], $_POST['score']);
+$query->execute();
+$query->close();
 $con->close();
 ?>

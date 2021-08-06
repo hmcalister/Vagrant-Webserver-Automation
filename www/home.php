@@ -53,6 +53,7 @@ if (!isset($_SESSION['loggedin'])) {
             // Log into database, make query of gamemode table
             // TODO: secure query
             include "database-login.php";
+            // This query is always server side, so no need to change it
             $result = mysqli_query($con, "SELECT * FROM gamemode;");
 
             // While there are still gamemodes
