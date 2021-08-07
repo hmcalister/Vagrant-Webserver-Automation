@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
       # Reload the webserver configuration, to pick up our changes
       service apache2 reload
     SHELL
-    webserver.vm.provision "shell", path: "ufw/ufw-usersite-config.sh"
+    #webserver.vm.provision "shell", path: "ufw/ufw-usersite-config.sh"
   end
 
   # Configure the database VM

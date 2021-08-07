@@ -10,10 +10,7 @@ ufw default deny outgoing
 ufw allow ssh
 
 # Allow SQL 
-# Allow incoming request on VM subnet
-ufw allow from 192.168.2.0/24 proto tcp to any port 3306
-#Allow outoging requests on VM subnet
-ufw allow to 192.168.2.0/24 proto tcp port 3306
+ufw allow mysql
 
 # Enable firewall
 echo "y" | ufw enable
