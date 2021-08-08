@@ -39,6 +39,7 @@ Vagrant.configure("2") do |config|
       # Reload the webserver configuration, to pick up our changes
       service apache2 reload
     SHELL
+    # Run ufw startup script
     webserver.vm.provision "shell", path: "ufw/ufw-usersite-config.sh"
   end
 
@@ -50,8 +51,9 @@ Vagrant.configure("2") do |config|
 
     # The following line is for consistency for assignment markers in the CS labs
     dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
-    
+    # Run MySQL startup script 
     dbserver.vm.provision "shell", path: "database-setup/mysql-setup.sh"
+    # Run ufw startup script
     dbserver.vm.provision "shell", path: "ufw/ufw-dbserver-config.sh"
   end
 
@@ -84,6 +86,7 @@ Vagrant.configure("2") do |config|
       # Reload the webserver configuration, to pick up our changes
       service apache2 reload
     SHELL
+    # Run ufw startup script
     adminserver.vm.provision "shell", path: "ufw/ufw-adminsite-config.sh"
   end
 
