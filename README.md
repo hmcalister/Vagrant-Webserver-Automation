@@ -27,6 +27,16 @@ After creating a database, tables are created using the `setup-database.sql` fil
 ### adminserver
 The adminserver runs Apache2, configured to host the admin-facing site using `adminsite.conf`. This VM has a port forward from the loopback port 8081 to VM port 80, so upon deployment you can connect to [`127.0.0.1:8081`](http://127.0.0.1:8081) to access `adminsite`. This VM is also configured to exist on the private network `192.168.2.0/24` with IP address `192.168.2.13` so connecting to this address with port 80 will also yield `adminsite`. These configurations can all be altered from `vagrantfile`. The current login is determined by the database files (specifically the admin table), and by default is Username: root, Password: root
 
+## Configuration 
+### Firewall
+
+All virtual machines use `ufw` to set up and configure the firewalls, the config
+files are located in `/ufw/` directory.These can updated to allow connectivity 
+of any additional resources or services you may need in the configuring or 
+editing of this deployment. For instance if HTTPS is desired to be enabled, 
+simply uncomment the lines in the files; `/path/to/ufw/ufw-adminsite-config.sh` 
+and `/path/to/ufw/ufw-usersite-config.sh`.
+
 ## Credits
 - A large portion of this project has been developed based on repurposed files from [COSC349 labs](https://cosc349.cspages.otago.ac.nz/lab-schedule/) (link working: July 2021). A massive credit goes to Dr. David Eyers, who provided these resources and allowed for them to be reused. Specifically, large parts of the `vagrantfile`, and `webserver.conf` file are based on these lab files.
 - Virtual Machines in this project run [`Ubuntu/Xenial`](https://ubuntu.com/16-04).
