@@ -34,6 +34,16 @@ The adminserver runs Nginx, configured to host the admin-facing site using the c
 - Securing SQL queries using prepared statements was an adventure, to stop SQL injections from malicious users
     - Some queries could not be secured with this method (adminsite/tables.php has a query that uses POST variable to set table we query, not easy to parameterize)
 
+## Configuration 
+### Firewall
+
+All virtual machines use `ufw` to set up and configure the firewalls, the config
+files are located in `/ufw/` directory.These can updated to allow connectivity 
+of any additional resources or services you may need in the configuring or 
+editing of this deployment. For instance if HTTPS is desired to be enabled, 
+simply uncomment the lines in the files; `/path/to/ufw/ufw-adminsite-config.sh` 
+and `/path/to/ufw/ufw-usersite-config.sh`.
+
 ## Credits
 - A large portion of this project has been developed based on repurposed files from [COSC349 labs](https://cosc349.cspages.otago.ac.nz/lab-schedule/) (link working: July 2021). A massive credit goes to Dr. David Eyers, who provided these resources and allowed for them to be reused. Specifically, large parts of the `vagrantfile`, and `webserver.conf` file are based on these lab files.
 - Virtual Machines in this project run [`Ubuntu/Xenial`](https://ubuntu.com/16-04).
