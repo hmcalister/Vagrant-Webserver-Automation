@@ -39,6 +39,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="row">
             <?php
             include 'database-login.php';
+            // This query doesn't have to be escaped, as it is always serverside
             $result = mysqli_query($con, "SHOW TABLES;");
             while ($table = mysqli_fetch_array($result, MYSQLI_NUM)) {
                 echo ("<div class='twelve columns'>");
@@ -54,6 +55,8 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="twelve columns">
                 <?php
                 if ($_POST) {
+                    // THis is truly the most unfortunate query, as we cannot parameterize the table name
+                    // In future, look into finding safe ways to do this query
                     echo ("<h1>Table: " . $_POST['table'] . "</h1>");
                     sql_query('SELECT * FROM ' . $_POST['table'] . ';');
                 }
