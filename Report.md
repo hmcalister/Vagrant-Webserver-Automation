@@ -49,7 +49,7 @@ Changes such as this may need reprovisioning of the virtual machines, especially
 If you wanted to change the webserver software from nginx to, for example, Apache, this could be done by altering a few simple lines in the vagrantfile and altering the `usersite` and/or `adminsite` files. This would also require reprovisioning or perhaps recreating the virtual machines, but if a developer wanted to do this it is entirely feasible.
 
 
-### Problem Points
+## Problem Points
 - Conflicting versions of Vagrant(2.2.18)/VirtualBox(6.1.26r145957) on Windows machines often required vagrant destroy to successfully run vagrant up again
 - Learning PHP, some JS, and AJAX caused many headaches
 - Securing SQL queries using prepared statements was an adventure, to stop SQL injections from malicious users
