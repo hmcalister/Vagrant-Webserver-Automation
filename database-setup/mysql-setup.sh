@@ -37,6 +37,9 @@ echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/admins.secret' INTO TABLE 
 # Load some initial game modes into the database
 echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/gamemodes.data' INTO TABLE gamemode FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (gamemode,modename,width,height,bomb_ratio)" | mysql -u $DBUSER $DBNAME
 
+# Load some initial scores in, just for example data
+echo "LOAD DATA LOCAL INFILE '/vagrant/database-setup/scores.data' INTO TABLE scores FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (username, gamemode, gamewon, score)" | mysql -u $DBUSER $DBNAME
+
 
 # Allow access to database from outside hosts using bind-address
 # Note this is a security hole, we should really make this more local

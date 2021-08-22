@@ -1,0 +1,12 @@
+MineMan,0,1,30000
+Defuser,0,1,20000
+KingPin,0,1,10000
+MineMan,1,1,100000
+Defuser,1,1,60000
+KingPin,1,1,30000
+MineMan,2,1,200000
+Defuser,2,1,100000
+KingPin,2,1,90000
+MineMan,3,1,2500000
+Defuser,3,1,1000000
+KingPin,3,1,500000
