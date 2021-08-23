@@ -1,5 +1,5 @@
 # COSC349-Assignment1
-A deployment of a user-facing web-server, database, and admin web-server on virtual machines using Vagrant
+A deployment of a Minesweeper implementation using 3 virtual machines: a user-facing web-server, database, and admin web-server on virtual machines using Vagrant.
 
 ## Deploying this project
 - Ensure that you have Vagrant and a virtual machine manager installed
@@ -24,6 +24,8 @@ If you clone this repository for your own use, please consider changing these cr
 
 ## Project Overview
 This project has three virtual machines (running ubuntu/xenial). One is hosting a user-facing webserver, port forwarded for access on a local machine. Another is hosting a MySQL database, for storage in the project, and the final VM is running an admin-facing webserver, for ease of administering the project with a webpage gui.
+
+The project itself is based around a game of minesweeper, implemented in Javascript in the userfacing site. The scores of this game are sent to the database server upon each game being completed. The admin server can interact with this database to examine information about these games.
 
 ### webserver
 The webserver runs Nginx, configured to host the user-facing site using the config file`usersite`.This file can be altered to reflect changes wishing to be made to the site, such as the name of the site, document root location, and enabling various supported Nginx modules i.e `php`,`ssl`, logging etc.
